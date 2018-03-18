@@ -66,6 +66,9 @@ const styles = {
   checkIcon: {
     width: 34,
     height: 34,
+  },
+  todosContainer: {
+    marginTop: 20,
   }
 }
 type Props = {};
@@ -193,7 +196,7 @@ export default class App extends Component<Props> {
           onChangeText={_controllNewToDo}
           onPress={_addToDo}
         />
-        <View>
+        <View style={styles.todosContainer}>
         {Object.values(toDos)
               .reverse()
               .map(toDo => (
