@@ -12,6 +12,7 @@ import {
   ScrollView,
   AsyncStorage
 } from 'react-native';
+import TodoHeader from './src/components/TodoHeader';
 import TodoInput from './src/components/TodoInput'; 
 import TodoItem from './src/components/TodoItem';
 
@@ -29,7 +30,6 @@ const instructions = Platform.select({
 const styles = {
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f08c00',
   },
@@ -154,6 +154,9 @@ export default class App extends Component<Props> {
       return { ...newState };
     });
   };
+  _randomAlert = () => {
+    
+  }
   render() {
     console.log(this.state.newToDo)
     const { newToDo, toDos } = this.state;
@@ -162,6 +165,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
        <StatusBar barStyle="light-content" />
+       <TodoHeader alertMessage="오늘 제일 중요한 일은?"/>
         <Text style={styles.title}>Golden Things :3</Text>
         <TodoInput
           placeholder={"Set Your Today :3"}

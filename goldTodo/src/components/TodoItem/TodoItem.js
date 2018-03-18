@@ -49,11 +49,11 @@ export default class Todo extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      todoValue: props.text,
+      toDoValue: props.text,
     }
   }
   render(){
-    const {todoValue, isEditing} = this.state;
+    const {toDoValue, isEditing} = this.state;
     const {text, id, deleteToDo, isCompleted } = this.props;
     return(
       <View style={styles.container}>
@@ -68,8 +68,8 @@ export default class Todo extends Component {
             ?
           <TextInput 
             style={[styles.text, isCompleted ? styles.completedText : styles.unCompletedText]} 
-            value={todoValue} 
-            onChange={this._controllInput}
+            value={toDoValue} 
+            onChangeText={this._controllInput}
             returnKeyType={"done"}
             onBlur={this._finishEditing}
             underlineColorAndroid={"transparent"}
@@ -106,11 +106,14 @@ export default class Todo extends Component {
     this.setState({ isEditing: true });
   };
   _controllInput = text => {
+    console.log(text);
     this.setState({ toDoValue: text });
+    console.log('this.state.todoValue', this.state.toDoValue);
   }
   _finishEditing = event => {
     event.stopPropagation();
     const { toDoValue } = this.state;
+    console.log('this.state.toDoValue', this.state.toDoValue)
     const { id, updateToDo } = this.props;
     updateToDo(id, toDoValue);
     this.setState({ isEditing: false });

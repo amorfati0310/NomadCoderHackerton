@@ -6,13 +6,12 @@ const styles = {
       display: 'flex',
       flexDirection: 'row',
       backgroundColor: '#F8F8F8',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center',
       width: 295,
       height: 60,
       padding: 5,
       marginTop: 20,
-      paddingTop: 15,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
@@ -23,14 +22,21 @@ const styles = {
       fontSize: 20
     },
     textInput: {
-        width: 265,
-        height: 100,
-        padding: 20,
+        width: 215,
+        height: 60,
+        marginLeft: 20,
+    },
+    addBtnContainer: {
+      display: 'flex',
+      width: 60,
+      height: 60,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#999',
     },
     addBtn: {
       width: 30,
       height: 30,
-      marginRight: 20,
     }
   };
 // Make a component
@@ -48,6 +54,7 @@ const TodoInput = ({value, onChangeText, onKeyPress, onPress, placeholder}) => {
         placeholderTextColor="#999"
       />
       <TouchableOpacity
+          style={styles.addBtnContainer}
           onPress={onPress}
         >
           <Image
