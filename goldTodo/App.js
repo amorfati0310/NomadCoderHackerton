@@ -27,6 +27,18 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const alertMessage = {
+  1: "Let's get it",
+  2: "Let's get it",
+  3: "Let's get it",
+  4: "Let's get it",
+  5: "Let's get it",
+  6: "Let's get it",
+  7: "Let's get it",
+  8: "Let's get it", 
+  9: "Let's get it",
+}
+
 const styles = {
   container: {
     flex: 1,
@@ -63,6 +75,7 @@ export default class App extends Component<Props> {
     this.state = { 
       newToDo: '',
       toDos: {},
+      err: false,
     };
   }
   _controllNewToDo = text => {
@@ -72,7 +85,9 @@ export default class App extends Component<Props> {
     console.log('this.state.newTodo',this.state.newToDo);
   }
   _addToDo = () => {
-    if(Object.values(this.state.toDos).length>=3) return ;
+    if(Object.values(this.state.toDos).length>=3){
+      return this.setState({err: true});
+    }
     const newToDo = this.state.newToDo.trim();
     if(!newToDo) return ;
     this.setState(prevState => {
@@ -154,18 +169,23 @@ export default class App extends Component<Props> {
       return { ...newState };
     });
   };
-  _randomAlert = () => {
-    
+  _getAlert = (err) => {
+      if(err){
+        return ':3개만 입력해야 된다고 !!!';
+      }
+      else{
+        return "Let's get it :3"
+      }
   }
   render() {
     console.log(this.state.newToDo)
     const { newToDo, toDos } = this.state;
     
-    const {_controllNewToDo, _addToDo, _deleteToDo, _uncompleteToDo, _completeToDo, _updateToDo } = this;
+    const {_controllNewToDo, _addToDo, _deleteToDo, _uncompleteToDo, _completeToDo, _updateToDo, _getAlert } = this;
     return (
       <View style={styles.container}>
        <StatusBar barStyle="light-content" />
-       <TodoHeader alertMessage="오늘 제일 중요한 일은?"/>
+       <TodoHeader alertMessage={_getAlert(this.state.err)}/>
         <Text style={styles.title}>Golden Things :3</Text>
         <TodoInput
           placeholder={"Set Your Today :3"}

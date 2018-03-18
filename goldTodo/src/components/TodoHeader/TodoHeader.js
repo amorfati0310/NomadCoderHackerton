@@ -6,17 +6,17 @@ const styles = {
       textAlign: 'center',
     },
     textStyle: {
-      fontSize: 20,
+      fontSize: 32,
       color: '#FFF',
-      marginTop: 150,
-      marginBottom: 100,
+      marginTop: 120,
+      marginBottom: 90,
     },
   };
 // Make a component
 const TodoHeader = (props) => {
   return (
     <View style={styles.viewStyle}>
-      <Text style={styles.textStyle}>{props.alertMessage}</Text>
+     <Text style={styles.textStyle}>{props.alertMessage}</Text>
     </View>
   );
 };

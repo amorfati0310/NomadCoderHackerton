@@ -10,7 +10,6 @@ const styles = {
       alignItems: 'center',
       width: 295,
       height: 60,
-      padding: 5,
       marginTop: 20,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
