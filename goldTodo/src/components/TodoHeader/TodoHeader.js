@@ -6,7 +6,7 @@ const styles = {
       textAlign: 'center',
     },
     textStyle: {
-      fontSize: 32,
+      fontSize: 28,
       color: '#FFF',
       marginTop: 120,
       marginBottom: 90,
